@@ -1,0 +1,246 @@
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<div class="container">
+	<div class="row">
+
+		<section class="content">
+			<h1>Foods available!!</h1>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-warning btn-filter" data-target="pendiente" onclick="window.location='../addEvent/addEvent.html'">Add Event</button>
+								<button type="button" class="btn btn-danger btn-filter" data-target="cancelado">LogOut</button>
+							</div>
+						</div>
+						<div class="table-container">
+							<table id="foodlist" class="table table-hover">
+								<tbody>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+	</div>
+</div>
+
+<head>
+
+<!--<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>  -->
+<script>
+  // Initialize Firebase
+  /*
+  var config = {
+    apiKey: "AIzaSyDN65zjYteSSGzusBHlgQfcxe2ODoIbWX0",
+    authDomain: "residuos-b833.firebaseapp.com",
+    databaseURL: "https://residuos-b833.firebaseio.com",
+    projectId: "residuos-b833",
+    storageBucket: "residuos-b833.appspot.com",
+    messagingSenderId: "85134939801"
+  };
+  firebase.initializeApp(config);
+
+	var name=document.getElementById('name')
+	var databaseReference=firebase.database().ref()
+	var databaseTables=databaseReference.child("Tables")
+	var eventTable=databaseTables.child("events Table")
+	var userName;
+
+  
+  firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              userName=user
+             alert("User is "+user.email)
+
+            
+            } else {
+              // No user is signed in.
+              alert("YOU ARE  not signed in")
+            }
+            });
+
+	
+	alert('user'+userName);
+	function signIn()
+			  {
+			  var email="sreekar@gmail.com"
+			  var password="1234567890";
+			  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+				// Handle Errors here.
+				alert(error);
+				// ...
+			  });  
+      }
+	signIn();
+	function logOut(){
+		firebase.auth().signOut().then(function() {
+			  // Sign-out successful.
+			}).catch(function(error) {
+			  // An error happened.
+			  alert(error);
+			});
+
+	}
+	
+	function showEvent(){
+		if(userName)
+		{
+			alert(userName.uid)
+			eventTable.on('child_added', function(data) {
+				var info="eventName: "+data.child('eventName').val()
+				+"\nphoneNumber: "+data.child('phoneNumber').val()
+				+"\nemailId: "+data.child('emailId').val()
+				+"\ndate: "+data.child('date').val()
+				+"\ntime: "+data.child('time').val()
+				+"\nfood: "+data.child('food').val()
+				+"\npersons: "+data.child('persons').val()
+				+"\nlocation: "+data.child('location').val() 
+
+				alert(info);
+			})
+		}
+		else
+		{
+			alert("You must login")
+		}
+
+
+	}
+	*/
+
+	var table = document.getElementById('foodlist');
+	function registeredForEvent(i){
+		registerButton = document.getElementById('register'+i);
+		registerButton.disabled = true;
+	}
+	function createHeader(){
+		//alert('Hi in createHeader');
+		
+		var header = table.createTHead();
+		header.style.fontFamily = "Palatino Linotype, Book Antiqua, Palatino, serif";
+		var row = header.insertRow(0);
+		var eventName = row.insertCell(0);
+		var phoneNumber = row.insertCell(1);
+		var eventDate = row.insertCell(2);
+		var time = row.insertCell(3);
+		var food = row.insertCell(4);
+		var person = row.insertCell(5);
+		var eventLocation = row.insertCell(6);
+		var buttonSelect = row.insertCell(7);
+		
+		eventName.innerHTML = "Event Name";
+		phoneNumber.innerHTML = "Phone Number";
+		eventDate.innerHTML = "Event Date";
+		time.innerHTML = "Time";
+		food.innerHTML = "Food";
+		person.innerHTML = "Persons";
+		eventLocation.innerHTML = "Event Location";
+	
+	}
+	function loadData(){
+		//signIn();
+		createHeader();
+		//alert('Hi in loadData');
+		//var table = document.getElementById('foodlist');
+		var numRows = 10;
+		for(var i = 1;i<numRows;++i){
+			var row1 = table.insertRow(i);
+			var row2 = table.insertRow(i);
+			var row3 = table.insertRow(i);
+			var row4 = table.insertRow(i);
+			var cell11 = row1.insertCell(0);
+			var cell21 = row1.insertCell(1);
+			var cell31 = row1.insertCell(2);
+			var cell41 = row1.insertCell(3);
+			var cell51 = row1.insertCell(4);
+			var cell61 = row1.insertCell(5);
+			var cell71 = row1.insertCell(6);
+			
+			//row.appendChild(cancel);
+			cell11.innerHTML = "Event1";
+			cell21.innerHTML = "2132111212";
+			cell31.innerHTML = "10/10/2018";
+			cell41.innerHTML = "10:00 a.m."
+			cell51.innerHTML = "Pizza"
+			cell61.innerHTML = "15"
+			cell71.innerHTML = "Plinth"
+
+			var cell12 = row2.insertCell(0);
+			var cell22 = row2.insertCell(1);
+			var cell32 = row2.insertCell(2);
+			var cell42 = row2.insertCell(3);
+			var cell52 = row2.insertCell(4);
+			var cell62 = row2.insertCell(5);
+			var cell72 = row2.insertCell(6);
+
+			cell12.innerHTML = "Event2";
+			cell22.innerHTML = "2142113212";
+			cell32.innerHTML = "10/10/2018";
+			cell42.innerHTML = "12:00 p.m.";
+			cell52.innerHTML = "Sambar";
+			cell62.innerHTML = "10";
+			cell72.innerHTML = "Mccallum";
+
+			var cell13 = row3.insertCell(0);
+			var cell23 = row3.insertCell(1);
+			var cell33 = row3.insertCell(2);
+			var cell43 = row3.insertCell(3);
+			var cell53 = row3.insertCell(4);
+			var cell63 = row3.insertCell(5);
+			var cell73 = row3.insertCell(6);
+
+			cell13.innerHTML = "Event3";
+			cell23.innerHTML = "2153141212";
+			cell33.innerHTML = "10/10/2018";
+			cell43.innerHTML = "10:00 a.m.";
+			cell53.innerHTML = "Redbull";
+			cell63.innerHTML = "20";
+			cell73.innerHTML = "ECSS";
+
+			var registered = false;
+			var register = document.createElement('button');
+			//var cancel = document.createElement('button');
+			register.id = "register"+i;
+			register.className = "btn btn-primary btn-filter";
+			register.innerHTML = "Im going here!";
+			//register.addEventListener("click",registeredForEvent(i));
+			//register.onclick = "registeredForEvent(i)";
+			register.onclick = function(){
+			//alert(registered);
+				if (!registered){
+					this.innerHTML = "I will not make it !";
+					this.className = "btn btn-danger btn-filter";
+					registered = true;
+					//alert(registered);
+				}
+				else if(registered){
+								
+				this.innerHTML = "Im going here !";
+				this.className = "btn btn-primary btn-filter";
+				registered = false;
+				
+				}
+			};
+			row.appendChild(register);
+			cell1.innerHTML = "Event1";
+			cell2.innerHTML = "1234567891";
+			var row1 = table.insertRow(2);
+			showEvent();
+		}
+	}
+	
+	
+
+</script>
+</head>
+
+<body background="img/food.jpg" onload="loadData()" >
+
+</body>

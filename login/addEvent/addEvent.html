@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Event</title>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDN65zjYteSSGzusBHlgQfcxe2ODoIbWX0",
+        authDomain: "residuos-b833.firebaseapp.com",
+        databaseURL: "https://residuos-b833.firebaseio.com",
+        projectId: "residuos-b833",
+        storageBucket: "residuos-b833.appspot.com",
+        messagingSenderId: "85134939801"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+
+
+</head>
+<body>
+
+  <script type="text/javascript">
+    function logOut(){
+              firebase.auth().signOut().then(function() {
+                  // Sign-out successful.
+                }).catch(function(error) {
+                  // An error happened.
+                  alert(error);
+                });
+
+            }
+
+
+    function insertEvent(){
+            if(userName)
+            {
+            alert(userName.uid)
+              eventTable.push().set({
+                eventName: document.getElementById("name").value,
+                phoneNumber: document.getElementById("phone").value,
+                emailId: userName.email,
+                date: document.getElementById("date").value,
+                time: document.getElementById("time").value,
+                food: document.getElementById("food").value,
+                persons: document.getElementById("person").value,
+                location: document.getElementById("location").value
+
+              })
+
+            }
+            else
+            {
+              alert("You must login")
+            }
+
+
+
+  }
+  </script>
+
+
+    <div class="main">
+
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-image">
+                    <img class="booking-img" src="images/form-img.jpg" alt="Booking Image">
+                </div>
+                <div class="booking-form">
+                    <form id="booking-form">
+                        <h2>Event Details</h2>
+                        <div class="form-group form-input">
+                          <label >Event name</label>
+                          <input type="text" name="name" id="name" required/>
+                        </div>
+                        <div class="form-group form-input">
+                          <label>Your phone number</label>
+                          <input type="number" name="phone" id="phone" required />
+                        </div>
+                        <div class="form-group form-input">
+                          <label >Event Date</label>
+                          <input type="date" name="date" id="date" required/>
+                        </div>
+                        <div class="form-group form-input">
+                          <label>Time</label>
+                          <input type="number" name="time" required />
+                        </div>
+                        <div class="form-group form-input">
+                          <label>Food</label>
+                          <input type="text" name="food" required/>
+                        </div>
+                        <div class="form-group form-input">
+                          <label>Persons</label>
+                          <input type="number" name="person" id="person" required/>
+                        </div>
+                        <div class="form-group form-input">
+                          <label>Event Location</label>
+                          <input type="text" name="location" id="location" required/>
+                        </div>
+
+
+                        <div class="form-submit">
+                            <input type="submit" value="Add Event" class="submit" id="submit" name="submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
